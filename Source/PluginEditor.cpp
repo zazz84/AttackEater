@@ -13,6 +13,14 @@
 AttackEaterAudioProcessorEditor::AttackEaterAudioProcessorEditor (AttackEaterAudioProcessor& p, juce::AudioProcessorValueTreeState& vts)
     : AudioProcessorEditor (&p), audioProcessor (p), valueTreeState(vts)
 {
+	juce::Colour light = juce::Colour::fromHSV(HUE * 0.01f, 0.5f, 0.6f, 1.0f);
+	juce::Colour medium = juce::Colour::fromHSV(HUE * 0.01f, 0.5f, 0.5f, 1.0f);
+	juce::Colour dark = juce::Colour::fromHSV(HUE * 0.01f, 0.5f, 0.4f, 1.0f);
+
+	getLookAndFeel().setColour(juce::Slider::thumbColourId, dark);
+	getLookAndFeel().setColour(juce::Slider::rotarySliderFillColourId, medium);
+	getLookAndFeel().setColour(juce::Slider::rotarySliderOutlineColourId, light);
+
 	for (int i = 0; i < N_SLIDERS_COUNT; i++)
 	{
 		auto& label = m_labels[i];
@@ -31,7 +39,7 @@ AttackEaterAudioProcessorEditor::AttackEaterAudioProcessorEditor (AttackEaterAud
 		m_sliderAttachment[i].reset(new SliderAttachment(valueTreeState, AttackEaterAudioProcessor::paramsNames[i], slider));
 	}
 
-	setSize((int)(200.0f * 0.01f * SCALE * N_SLIDERS_COUNT), (int)(200.0f * 0.01f * SCALE));
+	setSize((int)(SLIDER_WIDTH * 0.01f * SCALE * N_SLIDERS_COUNT), (int)(SLIDER_WIDTH * 0.01f * SCALE));
 }
 
 AttackEaterAudioProcessorEditor::~AttackEaterAudioProcessorEditor()
@@ -41,13 +49,13 @@ AttackEaterAudioProcessorEditor::~AttackEaterAudioProcessorEditor()
 //==============================================================================
 void AttackEaterAudioProcessorEditor::paint (juce::Graphics& g)
 {
-	g.fillAll(juce::Colours::darkslateblue);
+	g.fillAll(juce::Colour::fromHSV(HUE * 0.01f, 0.5f, 0.7f, 1.0f));
 }
 
 void AttackEaterAudioProcessorEditor::resized()
 {
 	int width = getWidth() / N_SLIDERS_COUNT;
-	int height = getHeight();
+	int height = (int)(SLIDER_WIDTH * 0.01f * SCALE);
 	
 	// Sliders + Menus
 	juce::Rectangle<int> rectangles[N_SLIDERS_COUNT];

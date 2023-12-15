@@ -181,3 +181,7 @@ JuceLibraryCode/JuceHeader.h
 JuceLibraryCode/JucePluginDefines.h
 JuceLibraryCode/ReadMe.txt
 AttackEater.filtergraph
+Builds/VisualStudio2017/x64/Release/Shared Code/AttackEa.F7822CDE.tlog/CL.10612.write.1.tlog
+Builds/VisualStudio2017/AttackEater_SharedCode.vcxproj.user
+Builds/VisualStudio2017/.vs/AttackEater/v15/ipch/AutoPCH/e48eb03584d5cad4/PLUGINPROCESSOR.ipch
+Builds/VisualStudio2017/.vs/AttackEater/v15/ipch/AutoPCH/7a781db2d1a50ba3/PLUGINEDITOR.ipch
